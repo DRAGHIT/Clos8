@@ -7,11 +7,11 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: 'black',
-        tabBarInactiveTintColor: 'grey',
+        tabBarInactiveTintColor: 'gray',
         headerShown: false,
         tabBarStyle: { 
           backgroundColor: 'white', 
-          borderTopColor: 'grey', 
+          borderTopColor: 'black', 
           paddingBottom: 5, 
           height: 60, 
         },
@@ -29,7 +29,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Camera',
+          title: '',
           tabBarIcon: ({ color }: { color: string }) => (
             <View style={styles.cameraIconContainer}>
               <FontAwesome size={28} name="camera-retro" color={color} />
@@ -53,13 +53,16 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   cameraIconContainer: {
     backgroundColor: 'white',
-    width: 50,
-    height: 50,
-    borderRadius: 30,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    position: 'absolute',
     bottom: 10,
+    left: '50%',
+    transform: [{ translateX: -35 }],
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'grey',
+    borderColor: 'black',
     borderWidth: 2,
   },
 });
