@@ -20,7 +20,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Clos8',
+          title: '',
           tabBarIcon: ({ color }: { color: string }) => (
             <FontAwesome size={28} name="user" color={color} />
           ),
@@ -40,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'About',
+          title: '',
           tabBarIcon: ({ color }: { color: string }) => (
             <FontAwesome size={28} name="info-circle" color={color} />
           ),

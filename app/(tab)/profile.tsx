@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Pressable, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable, ScrollView, TouchableOpacity, ImageBackground } from "react-native";
 
 export default function Tab() {
   const originalClothes = [
@@ -24,43 +24,50 @@ export default function Tab() {
   };
 
   return (
-    <ScrollView style={styles.scrollView}>
-      <View style={styles.container}>
-        {weeklyClothes.map((item, index) => (
-          <View key={index} style={styles.dayContainer}>
-            <Text style={styles.dayText}>{item.day}</Text>
-            <View style={styles.clothesContainer}>
-              <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, styles.pressable]}>
-                <Image style={styles.image} source={item.top} />
-                <Text style={styles.clothingText}>Top</Text>
-              </Pressable>
-              <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, styles.pressable]}>
-                <Image style={styles.image} source={item.bottom} />
-                <Text style={styles.clothingText}>Bottom</Text>
-              </Pressable>
+    <ImageBackground
+      source={require('./assets/images/peakpx.jpg')} // Add your background image here
+      style={styles.background}
+    >
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          {weeklyClothes.map((item, index) => (
+            <View key={index} style={styles.dayContainer}>
+              <Text style={styles.dayText}>{item.day}</Text>
+              <View style={styles.clothesContainer}>
+                <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, styles.pressable]}>
+                  <Image style={styles.image} source={item.top} />
+                  <Text style={styles.clothingText}>Top</Text>
+                </Pressable>
+                <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, styles.pressable]}>
+                  <Image style={styles.image} source={item.bottom} />
+                  <Text style={styles.clothingText}>Bottom</Text>
+                </Pressable>
+              </View>
             </View>
+          ))}
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={shuffleOutfits}>
+              <Text style={styles.buttonText}>Shuffle Outfits</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={resetOutfits}>
+              <Text style={styles.buttonText}>Reset Outfits</Text>
+            </TouchableOpacity>
           </View>
-        ))}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={shuffleOutfits}>
-            <Text style={styles.buttonText}>Shuffle Outfits</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={resetOutfits}>
-            <Text style={styles.buttonText}>Reset Outfits</Text>
-          </TouchableOpacity>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
   scrollView: {
     flex: 1,
-    backgroundColor: "teal",
   },
   container: {
-    flex: 1,  
+    flex: 1,
     padding: 16,
   },
   dayContainer: {
